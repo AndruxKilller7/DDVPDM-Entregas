@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class ItemManager : MonoBehaviour
 {
     public Text container;
-    
+    public Text nameCharacter;
+    public Text inteligencia;
+    public Text lasangas;
+    public Text agylity;
+    public Text force;
+
     void Start()
     {
        
@@ -16,7 +21,12 @@ public class ItemManager : MonoBehaviour
     
     void Update()
     {
-        container.text = GameManager.intance.lasangnas.ToString();  
+        container.text = GameManager.intance.lasangnas.ToString();
+        nameCharacter.text = GameManager.intance.nameCharacter;
+        inteligencia.text = GameManager.intance.inteligencia.ToString();
+        lasangas.text = GameManager.intance.lasangas.ToString();
+        agylity.text = GameManager.intance.agylity.ToString();
+        force.text = GameManager.intance.agylity.ToString();
         
     }
 
