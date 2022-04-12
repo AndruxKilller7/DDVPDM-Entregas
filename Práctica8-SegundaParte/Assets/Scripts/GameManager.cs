@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour
     public int lasangnas;
 
     public DatesP datesPlayer;
+    public DatesP datesPlayerSave;
+    public CardHUD datesHUD;
     public string nameCharacter;
     public int inteligencia;
     public int lasangas;
     public int agylity;
     public int force;
+    public float life;
 
 
 
@@ -21,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-       
+        //SaveGame();
+        //LoadGame();
 
     }
 
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         MakeSingleton();
+        life = datesHUD.cantidadDeVida;
         nameCharacter = datesPlayer.nameCharacter;
         inteligencia = datesPlayer.inteligencia;
         lasangas = datesPlayer.lasangas;
@@ -50,5 +55,18 @@ public class GameManager : MonoBehaviour
             intance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public void SaveGame()
+    {
+        SaveLoadGameManager.SavePlayerStats(datesHUD);
+    }
+
+    public void LoadGame()
+    {
+        HUDCotroller data = SaveLoadGameManager.LoadPlayerStats();
+
+        life = data.cantidad;
+
     }
 }

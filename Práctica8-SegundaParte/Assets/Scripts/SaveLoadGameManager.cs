@@ -6,22 +6,23 @@ using System.IO;
 
 public static class SaveLoadGameManager
 {
-    public static void SavePlayerStats(DatesP player) {
+    public static void SavePlayerStats(CardHUD player) 
+    {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerstats.kof";
         FileStream stream = new FileStream(path, FileMode.Create);
-        PlayerData playerStats = new PlayerData(player);
+        HUDCotroller playerStats = new HUDCotroller(player);
         formatter.Serialize(stream, playerStats);
         stream.Close();
     }
 
-    public static PlayerData LoadPlayerStats() {
+    public static HUDCotroller LoadPlayerStats() {
         string path = Application.persistentDataPath + "/playerstats.kof";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-            PlayerData player = formatter.Deserialize(stream) as PlayerData;
+            HUDCotroller player = formatter.Deserialize(stream) as HUDCotroller;
             stream.Close();
             return player;
         }
